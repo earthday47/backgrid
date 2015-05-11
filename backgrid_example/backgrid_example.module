@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Functions and hook implementations for Backgrid.js API Example module.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function backgrid_example_menu() {
+  $items['backgrid-example-basic'] = array(
+    'name' => 'Backgrid Example - Basic',
+    'description' => t('Basic example of Backgrid.js functionality.'),
+    'page callback' => 'backgrid_example_example_basic_page',
+    'access callback' => TRUE,
+    'file' => 'backgrid_example.pages.inc',
+    'type' => MENU_CALLBACK,
+  );
+  $items['backgrid-example'] = array(
+    'name' => 'Backgrid Example',
+    'description' => t('Demonstrates the module\'s integration with Backgrid.js'),
+    'page callback' => 'backgrid_example_example_page',
+    'access callback' => TRUE,
+    'file' => 'backgrid_example.pages.inc',
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}

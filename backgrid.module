@@ -1,0 +1,126 @@
+<?php
+
+/**
+ * @file
+ * Module hooks for the Backgrid.js API module.
+ */
+
+/**
+ * Implements hook_libraries_info().
+ */
+ function backgrid_libraries_info() {
+  $libraries['backgrid'] = array(
+    'name' => 'Backgrid.js',
+    'vendor url' => 'http://backgridjs.com/index.html',
+    'download url' => 'https://github.com/wyuenho/backgrid',
+    'version arguments' => array(
+      'file' => 'package.json',
+      'pattern' => '/(\d+\.\d+\.\d+)/',
+      'lines' => 3,
+    ),
+    'files' => array(
+      'js' => array(
+        'lib/backgrid.min.js',
+      ),
+      'css' => array(
+        'lib/backgrid.min.css',
+      ),
+    ),
+    'dependencies' => array(
+      'underscore (>=1.5)',
+      'backbone (>=1.1)',
+    ),
+  );
+  $libraries['backbone-paginator'] = array(
+    'name' => 'backbone.paginator',
+    'vendor url' => 'https://github.com/backbone-paginator/backbone.paginator',
+    'download url' => 'https://github.com/backbone-paginator/backbone.paginator',
+    'version arguments' => array(
+      'file' => 'lib/backbone.paginator.min.js',
+      'pattern' => '/backbone\.paginator (\d+\.\d+\.\d+)/',
+      'lines' => 2,
+    ),
+    'files' => array(
+      'js' => array(
+        'lib/backbone.paginator.min.js',
+      ),
+    ),
+    'dependencies' => array(
+      'backgrid',
+    ),
+  );
+  $libraries['backgrid-paginator'] = array(
+    'name' => 'Backgrid.js Paginator',
+    'vendor url' => 'https://github.com/wyuenho/backgrid-paginator',
+    'download url' => 'https://github.com/wyuenho/backgrid-paginator',
+    'version arguments' => array(
+      'file' => 'package.json',
+      'pattern' => '/(\d+\.\d+\.\d+)/',
+      'lines' => 3,
+    ),
+    'files' => array(
+      'js' => array(
+        // Can't use minified; see https://github.com/wyuenho/backgrid-paginator/issues/24
+        'backgrid-paginator.js',
+      ),
+      'css' => array(
+        'backgrid-paginator.min.css',
+      ),
+    ),
+    'dependencies' => array(
+      'backgrid',
+      'backbone-paginator',
+    ),
+  );
+  $libraries['backgrid-select-all'] = array(
+    'name' => 'Backgrid.js SelectAll',
+    'vendor url' => 'http://backgridjs.com/ref/extensions/select-all.html',
+    'download url' => 'https://github.com/wyuenho/backgrid-select-all',
+    'version arguments' => array(
+      'file' => 'package.json',
+      'pattern' => '/(\d+\.\d+\.\d+)/',
+      'lines' => 3,
+    ),
+    'files' => array(
+      'js' => array(
+        'backgrid-select-all.min.js',
+      ),
+      'css' => array(
+        'backgrid-select-all.min.css',
+      ),
+    ),
+    'dependencies' => array(
+      'backgrid',
+    ),
+  );
+  $libraries['backgrid-filter'] = array(
+    'name' => 'Backgrid.js Filter',
+    'vendor url' => 'https://github.com/wyuenho/backgrid-filter',
+    'download url' => 'https://github.com/wyuenho/backgrid-filter',
+    'version arguments' => array(
+      'file' => 'package.json',
+      'pattern' => '/(\d+\.\d+\.\d+)/',
+      'lines' => 3,
+    ),
+    'files' => array(
+      'js' => array(
+        'backgrid-filter.min.js',
+      ),
+      'css' => array(
+        'backgrid-filter.min.css',
+      ),
+    ),
+  );
+  return $libraries;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function backgrid_theme() {
+  return array(
+    'backgrid_table' => array(
+      'file' => 'theme.inc',
+    ),
+  );
+}

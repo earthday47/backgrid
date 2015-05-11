@@ -1,0 +1,4 @@
+name = Backgrid.js API Example
+description = Provides example implementation of Backgrid.js API.
+core = 7.x
+dependencies[] = backgrid

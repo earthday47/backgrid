@@ -1,1 +1,4 @@
-name = Backgrid.js
+name = Backgrid.js API
+description = Provides API integration with Backgrid.js for outputting Drupal queries as tabular data.
+core = 7.x
+dependencies[] = libraries
