@@ -36,3 +36,10 @@ function backgrid_example_example_page() {
     '#markup' => '<div id="backgrid-table"></div>',
   );
 }
+
+/**
+ * Page callback for /backgrid-example-theme.
+ */
+function backgrid_example_theme_page() {
+  return theme('backgrid_table', array('css_id' => 'rockadoodledoo'));
+}

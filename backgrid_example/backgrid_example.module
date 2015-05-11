@@ -19,8 +19,16 @@ function backgrid_example_menu() {
   );
   $items['backgrid-example'] = array(
     'name' => 'Backgrid Example',
-    'description' => t('Demonstrates the module\'s integration with Backgrid.js'),
+    'description' => t('Demonstrates Backgrid.js advanced functionality.'),
     'page callback' => 'backgrid_example_example_page',
+    'access callback' => TRUE,
+    'file' => 'backgrid_example.pages.inc',
+    'type' => MENU_CALLBACK,
+  );
+  $items['backgrid-example-theme'] = array(
+    'name' => 'Backgrid Example - Theme Function',
+    'description' => t('Demonstrates the module\'s integration with Backgrid.js and use of the theme function.'),
+    'page callback' => 'backgrid_example_theme_page',
     'access callback' => TRUE,
     'file' => 'backgrid_example.pages.inc',
     'type' => MENU_CALLBACK,

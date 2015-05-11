@@ -120,6 +120,9 @@
 function backgrid_theme() {
   return array(
     'backgrid_table' => array(
+      'variables' => array(
+        'table_id' => NULL,
+      ),
       'file' => 'theme.inc',
     ),
   );
