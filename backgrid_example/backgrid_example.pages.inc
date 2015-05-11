@@ -10,8 +10,13 @@
  */
 function backgrid_example_example_basic_page() {
   libraries_load('backgrid');
+  drupal_add_js(array('backgrid' => array(
+    'basePath' => drupal_get_path('module', 'backgrid'),
+  )), 'setting');
   drupal_add_js(drupal_get_path('module', 'backgrid_example') . '/backgrid_example_basic.js');
-  return theme('backgrid_table');
+  return array(
+    '#markup' => '<div id="backgrid-table"></div>',
+  );
 }
 
 /**
@@ -23,6 +28,11 @@ function backgrid_example_example_page() {
   libraries_load('backgrid-paginator');
   libraries_load('backgrid-select-all');
   libraries_load('backgrid-filter');
+  drupal_add_js(array('backgrid' => array(
+    'basePath' => drupal_get_path('module', 'backgrid'),
+  )), 'setting');
   drupal_add_js(drupal_get_path('module', 'backgrid_example') . '/backgrid_example.js');
-  return theme('backgrid_table');
+  return array(
+    '#markup' => '<div id="backgrid-table"></div>',
+  );
 }
