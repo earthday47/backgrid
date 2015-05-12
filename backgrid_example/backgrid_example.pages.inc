@@ -41,5 +41,45 @@ function backgrid_example_example_page() {
  * Page callback for /backgrid-example-theme.
  */
 function backgrid_example_theme_page() {
-  return theme('backgrid_table', array('css_id' => 'rockadoodledoo'));
+  return theme('backgrid_table', array(
+    'table_id' => 'rockadoodledoo',
+    'columns' => array(
+      array(
+        'name' => 'id',
+        'label' => 'ID',
+        'editable' => FALSE,
+        'cell' => 'string',
+      ),
+      array(
+        'name' => 'name',
+        'label' => 'Name',
+        'editable' => FALSE,
+        'cell' => 'string',
+      ),
+      array(
+        'name' => 'pop',
+        'label' => 'Population',
+        'editable' => FALSE,
+        'cell' => 'integer',
+      ),
+      array(
+        'name' => 'percentage',
+        'label' => '% of World Population',
+        'editable' => FALSE,
+        'cell' => 'number',
+      ),
+      array(
+        'name' => 'date',
+        'label' => 'Date',
+        'editable' => FALSE,
+        'cell' => 'date',
+      ),
+      array(
+        'name' => 'url',
+        'label' => 'URL',
+        'editable' => FALSE,
+        'cell' => 'uri',
+      ),
+    ),
+  ));
 }
