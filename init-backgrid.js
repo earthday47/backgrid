@@ -13,26 +13,26 @@ Drupal.behaviors.backgrid = {
       // Retrieve settings from Drupal object.
       tableSettings = settings.backgrid.tables[$tableId];
 
-      var Territory = Backbone.Model.extend({});
+      var bgModel = Backbone.Model.extend({});
 
-      var Territories = Backbone.Collection.extend({
-        model: Territory,
-        url: Drupal.settings.backgrid.basePath + "/backgrid_example/data/territories.json",
+      var bgCollection = Backbone.Collection.extend({
+        model: bgModel,
+        url: tableSettings.dataUrl,
       });
 
-      var territories = new Territories();
+      var objects = new bgCollection();
 
       // Initialize a new Grid instance
       var grid = new Backgrid.Grid({
         columns: tableSettings.columns,
-        collection: territories
+        collection: objects
       });
 
       // Render the grid and attach the root to your HTML document
       $(this).append(grid.render().el);
 
-      // Fetch some countries from the url
-      territories.fetch({reset: true});
+      // Fetch objects
+      objects.fetch({reset: true});
 
     })
 
