@@ -21,6 +21,7 @@ function theme_backgrid_table($vars) {
     'tables' => array(
       $table_id => array(
         'tableId' => $table_id,
+        'columns' => $vars['columns'],
       ),
     ),
   )), 'setting');
