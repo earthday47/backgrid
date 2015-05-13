@@ -8,6 +8,21 @@
 Drupal.behaviors.backgrid = {
   attach: function (context, settings) {
 
+    // Extend cell to include an "html" data type.
+    var DrupalHtmlCell = Backgrid.DrupalHtmlCell = Backgrid.Cell.extend({
+      className: "drupal-html-cell",
+      render: function () {
+        this.$el.empty();
+        var rawValue = this.model.get(this.column.get("name"));
+        // var formattedValue = this.formatter.fromRaw(rawValue, this.model);
+        // @todo strip all tags for formattedValue
+        // @todo Add XSS validation, passing raw data from feed is bad
+        this.$el.append(rawValue);
+        this.delegateEvents();
+        return this;
+      }
+    });
+
     $(".backgrid-table", context).each(function(index){
       var $tableId = this.id;
       // Retrieve settings from Drupal object.
