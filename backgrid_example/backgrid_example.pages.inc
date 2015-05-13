@@ -81,5 +81,6 @@ function backgrid_example_theme_page() {
         'cell' => 'uri',
       ),
     ),
+    'data_url' => base_path() . drupal_get_path('module', 'backgrid_example') . '/data/territories.json',
   ));
 }
