@@ -54,6 +54,18 @@
 
         var tableColumns = tableSettings.columns;
 
+        // For DrupalHtml cell, sort on plain text value.
+        for (id in tableColumns) {
+          if (tableColumns[id].cell == 'drupal-html') {
+            $.extend(tableColumns[id], {
+              sortValue: function (model, sortKey) {
+                //console.log(sortKey);
+                return $(model.get(sortKey)).text().trim();
+              }
+            });
+          }
+        }
+
         var bgModel = Backbone.Model.extend({});
 
         var bgCollection = Backbone.Collection.extend({
