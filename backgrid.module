@@ -129,3 +129,23 @@ function backgrid_theme() {
     ),
   );
 }
+
+/**
+ * Loads scripts to initialize backgrid library.
+ */
+function backgrid_js_load($table_id, $columns, $data_url) {
+  libraries_load('backgrid');
+  // Add init script.
+  drupal_add_js(drupal_get_path('module', 'backgrid') .'/init-backgrid.js', array('scope' => 'footer'));
+  // Add settings.
+  drupal_add_js(array('backgrid' => array(
+    'basePath' => drupal_get_path('module', 'backgrid'),
+    'tables' => array(
+      $table_id => array(
+        'tableId' => $table_id,
+        'columns' => $columns,
+        'dataUrl' => $data_url,
+      ),
+    ),
+  )), 'setting');
+}
