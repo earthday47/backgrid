@@ -113,7 +113,7 @@ function backgrid_libraries_info() {
   );
   $libraries['underscore'] = array(
     'name' => 'Underscore',
-    'vendor url' => 'http://documentcloud.github.io/backbone/',
+    'vendor url' => 'http://underscorejs.org/',
     'download url' => 'https://github.com/jashkenas/underscore/archive/1.5.2.zip',
     'library path' => 'sites/all/libraries/underscore',
     'version arguments' => array(
