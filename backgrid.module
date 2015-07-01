@@ -8,7 +8,7 @@
 /**
  * Implements hook_libraries_info().
  */
- function backgrid_libraries_info() {
+function backgrid_libraries_info() {
   $libraries['backgrid'] = array(
     'name' => 'Backgrid.js',
     'vendor url' => 'http://backgridjs.com/index.html',
@@ -111,6 +111,38 @@
       ),
     ),
   );
+  $libraries['underscore'] = array(
+    'name' => 'Underscore',
+    'vendor url' => 'http://documentcloud.github.io/backbone/',
+    'download url' => 'https://github.com/jashkenas/underscore/archive/1.5.2.zip',
+    'library path' => 'sites/all/libraries/underscore',
+    'version arguments' => array(
+      'file' => 'underscore.js',
+      'pattern' => '#VERSION *\W *[\'\"]{1}(.*?)[\'\"]{1}#',
+      'lines' => 100,
+    ),
+    'files' => array(
+      'js' => array(
+        'underscore-min.js',
+      ),
+    ),
+  );
+  $libraries['backbone'] = array(
+    'name' => 'Backbone',
+    'vendor url' => 'http://documentcloud.github.io/backbone/',
+    'download url' => 'https://github.com/jashkenas/backbone/archive/1.1.0.zip',
+    'library path' => 'sites/all/libraries/backbone',
+    'version arguments' => array(
+      'file' => 'backbone.js',
+      'pattern' => '#VERSION *\W *[\'\"]{1}(.*?)[\'\"]{1}#',
+      'lines' => 50,
+    ),
+    'files' => array(
+      'js' => array(
+        'backbone-min.js',
+      ),
+    ),
+  );
   return $libraries;
 }
 
@@ -148,4 +180,17 @@ function backgrid_js_load($table_id, $columns, $data_url) {
       ),
     ),
   )), 'setting');
+}
+
+/**
+ * Implements hook_libraries_info_alter().
+ */
+function backgrid_libraries_info_alter(&$libraries) {
+  // Added js files for backbone or underscore in case they don't exist.
+  if (!empty($libraries['backbone']) && empty($libraries['backbone']['files'])) {
+    $libraries['backbone']['files'] = array('js' => array('backbone-min.js'));
+  }
+  if (!empty($libraries['underscore']) && empty($libraries['underscore']['files'])) {
+    $libraries['underscore']['files'] = array('js' => array('underscore-min.js'));
+  }
 }
